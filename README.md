@@ -1,26 +1,47 @@
 # SAMAYRA | Luxury Fashion Platform
 
-A high-end digital fashion destination featuring a magazine-style Lookbook, curated collections, and a personalized fit quiz.
+A high-end digital fashion destination featuring a magazine-style Lookbook, curated collections, a personalized fit quiz, and a Virtual Closet. 
 
-## 🚀 How to Run the Platform
+## 🚀 Features
+
+- **Pixel-Perfect Hero UI**: A modern, side-by-side hero layout featuring Playfair Display typography overlapping absolute/grid fashion cards.
+- **Virtual Closet**: Users can save their favorite pieces to their personalized closet. 
+- **Hybrid Data Architecture**: Robust backend handling fallback products through `local_products.json` combined with MongoDB. Mongoose schemas are optimized to handle both standard ObjectIds and local string IDs seamlessly.
+- **Enhanced Security & Performance**: Includes secure CORS origin whitelisting, stripped hardcoded API strings for dynamic environments, layout-thrashing prevention in DOM rendering, and XSS sanitization.
+- **Image Scrapers**: Built-in scraper utilities for pulling high-quality fashion images (`scrape_ddg.js`, `scrape_pexels.js`, `scrape_pinterest.js`, `scrape_unsplash.js`, etc.).
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Vanilla JavaScript, HTML5, CSS3 
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Atlas) / Mongoose
+- **Typography**: Playfair Display (Serif) & Poppins (Sans-serif)
+
+## ⚙️ How to Run the Platform
 
 Follow these steps to get the full Samayra experience running locally:
 
 ### 1. Start the Backend Server
 1. Open your terminal in the `backend` folder.
-2. Run the command:
+2. Install dependencies if you haven't already:
    ```bash
-   npm start
+   npm install
    ```
-   *Note: The server runs on `http://localhost:5000`. It features a built-in fail-safe that uses local high-res photos if the cloud database is unreachable.*
+3. Run the backend server:
+   ```bash
+   node server.js
+   # or npm start
+   ```
+   *Note: Continues to run securely on port `5000` (`http://localhost:5000`). It features a built-in fail-safe that uses local high-res photos if the cloud database is unreachable or missing items.*
 
 ### 2. Launch the Frontend
-1. Open your terminal in the `frontend` folder.
-2. You can use any local server (like Live Server in VS Code) or run:
+1. Open a new terminal in the `frontend` folder.
+2. Serve the static files (e.g., using `http-server` or `live-server`):
    ```bash
-   npx live-server
+   npx http-server -p 5500
    ```
-3. Open `http://localhost:3000` (or the port provided) in your browser.
+   *Note: The frontend is configured to communicate with the global `API_BASE` locally.*
+3. Open `http://localhost:5500` in your browser.
 
 ---
 
@@ -32,20 +53,16 @@ If you want to ensure all collection photos are stored permanently on your machi
    ```bash
    node imageDownloader.js
    ```
-3. This will search, download, and store 15 premium model photos into `frontend/assets/products/` and create a `local_products.json` manifest.
+3. This utility will download and store premium model photos into `../frontend/assets/products/` and update the `local_products.json` manifest. You can also seed data using `node seed.js`.
 
 ---
 
 ## 🏛️ Project Architecture
-- **Lookbook**: A multi-spread editorial magazine layout.
-- **Collection**: A high-impact product gallery with sticky filter navigation.
-- **Fit Quiz**: A personalized style recommender with silhouette analysis.
-- **Virtual Closet**: Save your favorite pieces (requires login).
-
-## 🛠️ Tech Stack
-- **Frontend**: Vanilla JS, HTML5, Premium CSS3.
-- **Backend**: Node.js, Express, MongoDB Atlas.
-- **Typography**: Playfair Display (Serif) & Poppins (Sans-serif).
+- **Lookbook**: A multi-spread editorial magazine layout (`lookbook.html`).
+- **Collection**: A high-impact product gallery (`collection.html`).
+- **Hero/Landing**: The redesigned pixel-perfect entry point (`index.html`).
+- **Fit Quiz**: A personalized style recommender with silhouette analysis (`fit.html`).
+- **Virtual Closet**: Profile management and saved items page (`profile.html`).
 
 ---
 © 2026 SAMAYRA — Luxury Fashion House
