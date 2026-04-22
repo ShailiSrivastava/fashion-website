@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Lookbook</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f6f4f1;
+  color:#111;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px 90px;
+  background:#faf8f5;
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  letter-spacing:10px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:45px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#111;
+  font-size:15px;
+}
+
+/* HEADER */
+.header{
+  padding:100px 90px 70px;
+  text-align:center;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:64px;
+  margin-bottom:15px;
+}
+
+.header p{
+  font-size:16px;
+  opacity:0.8;
+}
+
+/* LOOKBOOK GRID */
+.lookbook{
+  padding:0 90px 120px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:50px;
+}
+
+/* CARD */
+.look-card{
+  aspect-ratio:1 / 1;
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  background:#eae7e3; /* IMPORTANT */
+  box-shadow:0 30px 60px rgba(0,0,0,0.25);
+  transition:0.5s;
+}
+
+.look-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 45px 90px rgba(0,0,0,0.35);
+}
+
+/* IMAGE FIX */
+.look-card img{
+  width:100%;
+  height:100%;
+  object-fit:contain;   /* 🔥 FIX */
+  object-position:center;
+}
+
+/* OVERLAY */
+.look-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.65),rgba(0,0,0,0));
+  display:flex;
+  align-items:flex-end;
+  padding:22px;
+}
+
+.look-overlay h3{
+  color:white;
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  letter-spacing:3px;
+}
+
+/* QUOTE */
+.quote{
+  padding:120px 90px;
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  line-height:1.5;
+  background:#eeeae5;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">SAMAYRA</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+  </ul>
+</nav>
+
+<section class="header">
+  <h1>Lookbook</h1>
+  <p>An editorial exploration of style, mood, and modern elegance.</p>
+</section>
+
+<section class="lookbook">
+
+  <div class="look-card">
+    <img src="WhatsApp Image 2026-02-01 at 22.06.53.jpeg">
+    <div class="look-overlay"><h3>Everyday Muse</h3></div>
+  </div>
+
+  <div class="look-card">
+    <img src="hey2.....jpeg">
+    <div class="look-overlay"><h3>Crimson Heritage</h3></div>
+  </div>
+
+  <div class="look-card">
+    <img src="hey3...jpeg">
+    <div class="look-overlay"><h3>Emerald Afterglow</h3></div>
+  </div>
+
+  <div class="look-card">
+    <img src="iiiiiii.jpeg">
+    <div class="look-overlay"><h3>Riviera Street</h3></div>
+  </div>
+
+  <div class="look-card">
+    <img src="hey4.jpeg">
+    <div class="look-overlay"><h3>Desert Poise</h3></div>
+  </div>
+
+  <div class="look-card">
+    <img src="hey5.jpeg">
+    <div class="look-overlay"><h3>Velvet Dusk</h3></div>
+  </div>
+
+</section>
+
+<section class="quote">
+  “Fashion is not about trends.  
+  It’s about identity, confidence, and presence.”
+</section>
+
+<footer>
+  © 2026 SAMAYRA — Luxury Fashion House
+</footer>
+
+</body>
+</html>

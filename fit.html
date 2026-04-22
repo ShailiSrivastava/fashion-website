@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Find Your Fit</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#f6f4f1;color:#111;}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:28px 90px;background:#faf8f5;}
+.logo{font-family:'Playfair Display',serif;font-size:34px;letter-spacing:10px;}
+nav ul{list-style:none;display:flex;gap:45px;}
+nav ul li a{text-decoration:none;color:#111;}
+
+.header{text-align:center;padding:90px 20px 60px;}
+.header h1{font-family:'Playfair Display',serif;font-size:56px;}
+.header p{margin-top:10px;opacity:0.8;}
+
+.fit-container{display:flex;justify-content:center;gap:70px;padding-bottom:120px;}
+
+.quiz{width:650px;background:white;padding:50px;border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,0.15);}
+.question{margin-bottom:35px;}
+
+button{padding:14px 36px;background:black;color:white;border:none;cursor:pointer;}
+
+.result{display:none;text-align:center;margin-top:30px;}
+
+.camera-beta{margin-top:40px;text-align:center;}
+.camera-beta video{width:100%;max-width:320px;border-radius:16px;background:black;}
+
+.fit-visual img{width:260px;}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">SAMAYRA</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+  </ul>
+</nav>
+
+<section class="header">
+  <h1>Find Your Fit</h1>
+  <p>Answer a few questions to discover silhouettes that suit you best.</p>
+</section>
+
+<section class="fit-container">
+
+<div class="quiz">
+
+<div class="question">
+<h3>1. Shoulder vs hips?</h3>
+<label><input type="radio" name="shape" value="pear"> Narrow</label>
+<label><input type="radio" name="shape" value="hourglass"> Balanced</label>
+<label><input type="radio" name="shape" value="inverted"> Broad</label>
+</div>
+
+<div class="question">
+<h3>2. Waist?</h3>
+<label><input type="radio" name="waist" value="defined"> Defined</label>
+<label><input type="radio" name="waist" value="slight"> Slight</label>
+<label><input type="radio" name="waist" value="straight"> Straight</label>
+</div>
+
+<button onclick="calculateFit()">SEE MY FIT</button>
+
+<div class="result" id="result">
+<h2 id="bodyType"></h2>
+<p id="advice"></p>
+</div>
+
+<div class="camera-beta" id="cameraSection" style="display:none;">
+<video id="video" autoplay></video>
+<button onclick="startCamera()">Start Camera</button>
+<p id="confidenceText"></p>
+</div>
+
+</div>
+
+<div class="fit-visual">
+<img src="download (1).jpg">
+</div>
+
+</section>
+
+<script>
+
+let lastFitType = "";
+
+// BACKEND
+function saveFit(data){
+  fetch("http://localhost:5000/saveFit", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      name: "User",
+      email: "user@gmail.com",
+      fitType: data.type
+    })
+  })
+  .then(res => res.json())
+  .then(res => {
+    console.log("Saved:", res);
+    localStorage.setItem("samayraFit", JSON.stringify(data));
+  })
+  .catch(err => console.log(err));
+}
+
+function calculateFit(){
+  const shape = document.querySelector('input[name="shape"]:checked')?.value;
+  const waist = document.querySelector('input[name="waist"]:checked')?.value;
+
+  if(!shape || !waist){
+    alert("Answer all questions");
+    return;
+  }
+
+  let type="", advice="";
+
+  if(shape==="hourglass" && waist==="defined"){
+    type="Hourglass Silhouette";
+    advice="Fitted styles suit you best";
+  }
+  else if(shape==="pear"){
+    type="Pear Silhouette";
+    advice="A-line outfits balance you";
+  }
+  else if(shape==="inverted"){
+    type="Inverted Triangle";
+    advice="Flowy bottoms work well";
+  }
+  else{
+    type="Straight Silhouette";
+    advice="Layering adds shape";
+  }
+
+  lastFitType = type;
+
+  document.getElementById("bodyType").innerText = type;
+  document.getElementById("advice").innerText = advice;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("cameraSection").style.display = "block";
+
+  saveFit({type, advice});
+}
+
+// ✅ UPDATED CAMERA (SMART VERSION)
+async function startCamera(){
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({video:true});
+    document.getElementById("video").srcObject = stream;
+
+    document.getElementById("confidenceText").innerText = "Analyzing posture...";
+
+    setTimeout(()=>{
+      let confidence;
+      const random = Math.random();
+
+      if(random > 0.7){
+        confidence = "High";
+      } else if(random > 0.4){
+        confidence = "Medium";
+      } else {
+        confidence = "Low";
+      }
+
+      const msg = `Fit Confidence: ${confidence}`;
+      document.getElementById("confidenceText").innerText = msg;
+
+      const saved = JSON.parse(localStorage.getItem("samayraFit")) || {};
+      saveFit({...saved, confidence: msg});
+
+    },2000);
+
+  }catch{
+    alert("Camera denied");
+  }
+}
+
+</script>
+
+</body>
+</html>

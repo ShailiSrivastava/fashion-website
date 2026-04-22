@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Collection</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f6f4f1;
+  color:#111;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px 90px;
+  background:#faf8f5;
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  letter-spacing:10px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:45px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#111;
+  font-size:15px;
+}
+
+/* HEADER */
+.header{
+  padding:80px 90px 20px;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:56px;
+}
+
+.header p{
+  margin-top:10px;
+  opacity:0.8;
+}
+
+/* FIT MESSAGE */
+#fitMessage{
+  padding:0 90px 20px;
+  font-size:16px;
+  font-style:italic;
+  opacity:0.85;
+}
+
+/* FILTERS */
+.filters{
+  display:flex;
+  gap:20px;
+  padding:20px 90px 50px;
+}
+
+.filters button{
+  background:none;
+  border:1px solid #111;
+  padding:10px 28px;
+  letter-spacing:2px;
+  font-size:13px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.filters button:hover,
+.filters button.active{
+  background:#111;
+  color:white;
+}
+
+/* GRID */
+.collection{
+  padding:0 90px 100px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:45px;
+}
+
+.item{
+  background:white;
+  overflow:hidden;
+  transition:0.4s;
+}
+
+.item:hover{
+  transform:translateY(-10px);
+}
+
+.item img{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+}
+
+.item-info{
+  padding:18px;
+}
+
+.item-info h3{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+}
+
+.item-info p{
+  margin-top:6px;
+  font-size:14px;
+  opacity:0.7;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">SAMAYRA</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<section class="header">
+  <h1>Our Collection</h1>
+  <p>Curated fashion for every mood, moment, and movement.</p>
+</section>
+
+<!-- PERSONALIZED MESSAGE -->
+<p id="fitMessage"></p>
+
+<!-- FILTER BUTTONS -->
+<section class="filters">
+  <button id="allBtn" class="active" onclick="filterItems('all', this)">ALL</button>
+  <button id="casualBtn" onclick="filterItems('casual', this)">CASUALS</button>
+  <button id="traditionalBtn" onclick="filterItems('traditional', this)">TRADITIONALS</button>
+  <button id="partyBtn" onclick="filterItems('party', this)">PARTY WEAR</button>
+</section>
+
+<!-- COLLECTION GRID -->
+<section class="collection">
+
+  <div class="item" data-category="casual">
+    <img src="everyday casuals.jpg">
+    <div class="item-info">
+      <h3>Everyday Casual Dress</h3>
+      <p>Casuals</p>
+    </div>
+  </div>
+
+  <div class="item" data-category="traditional">
+    <img src="ivory.jpg">
+    <div class="item-info">
+      <h3>Ivory Silk Saree</h3>
+      <p>Traditionals</p>
+    </div>
+  </div>
+
+  <div class="item" data-category="party">
+    <img src="evening gown.jpg">
+    <div class="item-info">
+      <h3>Evening Party Gown</h3>
+      <p>Party Wear</p>
+    </div>
+  </div>
+
+  <div class="item" data-category="casual">
+    <img src="Denio.jpg">
+    <div class="item-info">
+      <h3>Modern Co-Ord Set</h3>
+      <p>Casuals</p>
+    </div>
+  </div>
+
+  <div class="item" data-category="traditional">
+    <img src="download.jpg">
+    <div class="item-info">
+      <h3>Luxury Bridal Saree</h3>
+      <p>Traditionals</p>
+    </div>
+  </div>
+
+  <div class="item" data-category="party">
+    <img src="statement.jpg">
+    <div class="item-info">
+      <h3>Statement Party Dress</h3>
+      <p>Party Wear</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+ SAMAYRA — Luxury Fashion House
+</footer>
+
+<script>
+function filterItems(category, btn){
+  const items = document.querySelectorAll('.item');
+  const buttons = document.querySelectorAll('.filters button');
+
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  items.forEach(item => {
+    item.style.display =
+      category === 'all' || item.dataset.category === category
+      ? 'block'
+      : 'none';
+  });
+}
+
+/* AUTO PERSONALIZATION USING SAVED FIT */
+window.onload = () => {
+  const saved = localStorage.getItem("samayraFit");
+  if(!saved) return;
+
+  const fit = JSON.parse(saved);
+  const message = document.getElementById("fitMessage");
+
+  let category = "all";
+  let button = document.getElementById("allBtn");
+
+  if(fit.type.includes("Pear")){
+    category = "traditional";
+    button = document.getElementById("traditionalBtn");
+    message.innerText = "Curated for your Pear Silhouette — styles that balance and flatter.";
+  }
+  else if(fit.type.includes("Hourglass")){
+    category = "party";
+    button = document.getElementById("partyBtn");
+    message.innerText = "Curated for your Hourglass Silhouette — silhouettes that celebrate balance.";
+  }
+  else if(fit.type.includes("Inverted")){
+    category = "casual";
+    button = document.getElementById("casualBtn");
+    message.innerText = "Curated for your Inverted Triangle Silhouette — relaxed and flowing fits.";
+  }
+  else if(fit.type.includes("Straight")){
+    category = "casual";
+    button = document.getElementById("casualBtn");
+    message.innerText = "Curated for your Straight Silhouette — styles that add structure and shape.";
+  }
+
+  filterItems(category, button);
+};
+</script>
+
+</body>
+</html>

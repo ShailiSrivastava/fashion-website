@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#edeae6; /* darker luxury grey */
+  color:#111;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px 90px;
+  background:#faf8f5;
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  letter-spacing:10px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:45px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#111;
+}
+
+/* CENTER BOX */
+.container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:80vh;
+}
+
+.auth-box{
+  width:420px;
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.15);
+  text-align:center;
+}
+
+.auth-box h2{
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
+}
+
+/* INPUTS */
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:none;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:12px;
+  background:black;
+  color:white;
+  border:none;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+/* TOGGLE */
+.toggle{
+  margin-top:15px;
+  font-size:14px;
+  cursor:pointer;
+  color:#555;
+}
+
+/* ERROR MESSAGE */
+.error{
+  color:red;
+  font-size:13px;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">SAMAYRA</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="auth-box">
+
+    <h2 id="title">Login</h2>
+
+    <input type="text" id="name" placeholder="Name" style="display:none;">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="submitForm()">Login</button>
+
+    <p class="toggle" onclick="toggleForm()">Don't have an account? Sign up</p>
+
+    <p id="errorMsg" class="error"></p>
+
+  </div>
+</div>
+
+<script>
+let isSignup = false;
+
+function toggleForm(){
+  isSignup = !isSignup;
+
+  document.getElementById("title").innerText = isSignup ? "Create Account" : "Login";
+  document.querySelector("button").innerText = isSignup ? "Sign Up" : "Login";
+
+  document.getElementById("name").style.display = isSignup ? "block" : "none";
+
+  document.querySelector(".toggle").innerText =
+    isSignup ? "Already have an account? Login" : "Don't have an account? Sign up";
+
+  document.getElementById("errorMsg").innerText = "";
+}
+
+function submitForm(){
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const errorBox = document.getElementById("errorMsg");
+  errorBox.innerText = "";
+
+  if(!email || !password || (isSignup && !name)){
+    errorBox.innerText = "Please fill all fields";
+    return;
+  }
+
+  const url = isSignup
+    ? "http://localhost:5000/signup"
+    : "http://localhost:5000/login";
+
+  fetch(url,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({name,email,password})
+  })
+  .then(async res=>{
+    const data = await res.json();
+
+    if(!res.ok){
+      errorBox.innerText = data.message || "Something went wrong";
+      return;
+    }
+
+    // SUCCESS
+    if(isSignup){
+      errorBox.style.color = "green";
+      errorBox.innerText = "Account created! Please login.";
+      toggleForm();
+      return;
+    }
+
+    // LOGIN SUCCESS
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    window.location.href = "index.html";
+  })
+  .catch(err=>{
+    errorBox.innerText = "Server error";
+    console.log(err);
+  });
+}
+</script>
+
+</body>
+</html>
