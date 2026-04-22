@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Modern Luxury Fashion House</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* HERO V3 REDESIGN */
+  .hero-v3 {
+    background-color: #b5b6af; /* Matches provided screenshot */
+    min-height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 90px;
+    overflow: hidden;
+  }
+
+  .hero-v3-left {
+    flex: 1;
+    max-width: 600px;
+    z-index: 5;
+  }
+
+  .sub-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: #555;
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .main-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(80px, 9vw, 110px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: 2px;
+    color: #111;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .hero-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 45px;
+    max-width: 500px;
+    animation: fadeInUp 1.2s ease forwards;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 15px;
+    animation: fadeInUp 1.4s ease forwards;
+  }
+
+  .cta-btn-dark {
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    border: 1px solid #000;
+    transition: 0.3s;
+  }
+  .cta-btn-dark:hover {
+    background: #111;
+  }
+
+  .cta-btn-outline {
+    font-family: 'Poppins', sans-serif;
+    background: transparent;
+    color: #111;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    border: 1px solid #111;
+    transition: 0.3s;
+  }
+  .cta-btn-outline:hover {
+    background: #111;
+    color: #fff;
+  }
+
+  .hero-v3-right {
+    flex: 1;
+    position: relative;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  .hero-img-card {
+    position: absolute;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  }
+
+  .hero-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-casuals {
+    width: 270px;
+    height: 270px;
+    top: 60px;
+    right: 40px;
+    z-index: 1;
+  }
+
+  .card-traditionals {
+    width: 280px;
+    height: 300px;
+    right: 360px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .card-party {
+    width: 270px;
+    height: 350px;
+    bottom: 60px;
+    right: 40px;
+    z-index: 1;
+  }
+
+  .card-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px 25px 25px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.9; }
+  }
+
+  /* CATEGORY GRID V2 */
+  .category-showcase {
+    padding: 150px 90px;
+    background: #fff;
+  }
+
+  .section-tag {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #aaa;
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .showcase-card {
+    position: relative;
+    height: 700px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .showcase-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+  }
+
+  .showcase-card:hover img {
+    transform: scale(1.1);
+  }
+
+  .showcase-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 50px;
+    color: white;
+    transition: 0.5s;
+  }
+
+  .showcase-card:hover .showcase-overlay {
+    background: rgba(0,0,0,0.3);
+  }
+
+  .showcase-overlay h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  /* PHILOSOPHY SECTION */
+  .philosophy {
+    padding: 200px 90px;
+    text-align: center;
+    background: #111;
+    color: white;
+  }
+
+  .philosophy h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .cta-block {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">SAMAYRA</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+    <li><a href="fit.html">Fit Quiz</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- TYPOGRAPHIC HERO (NEW DESIGN) -->
+  <section class="hero-v3">
+    <div class="hero-v3-left">
+      <div class="sub-heading">Redefining</div>
+      <h1 class="main-heading">MODERN<br>FASHION</h1>
+      <p class="hero-desc">Timeless luxury crafted for bold, confident silhouettes.</p>
+      <div class="cta-buttons">
+        <a href="collection.html" class="cta-btn-dark">EXPLORE COLLECTION</a>
+        <a href="fit.html" class="cta-btn-outline">FIND YOUR FIT</a>
+      </div>
+    </div>
+    <div class="hero-v3-right">
+      <div class="hero-img-card card-casuals">
+        <img src="assets/44 Chic Paris Summer Outfits That Capture The Timeless Style Of The City of Lights.jpg" alt="Casuals">
+        <div class="card-label">Casuals</div>
+      </div>
+      <div class="hero-img-card card-traditionals">
+        <img src="assets/Exquisite Designer Sarees for Wedding Party Wear.jpg" alt="Traditionals">
+        <div class="card-label">Traditionals</div>
+      </div>
+      <div class="hero-img-card card-party">
+        <img src="assets/Larobe8.jpg" alt="Party Wear">
+        <div class="card-label">Party Wear</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY SHOWCASE -->
+  <section class="category-showcase">
+    <span class="section-tag">CURATED CATEGORIES</span>
+    <h2 style="font-family:'Playfair Display'; font-size: 56px; text-align: center;">The Season's Palette</h2>
+    
+    <div class="showcase-grid">
+      <div class="showcase-card" onclick="location.href='collection.html'">
+        <img src="assets/44 Chic Paris Summer Outfits That Capture The Timeless Style Of The City of Lights.jpg" alt="Casuals">
+        <div class="showcase-overlay">
+          <h3>Casuals</h3>
+          <p>Everyday elegance</p>
+        </div>
+      </div>
+      
+      <div class="showcase-card" onclick="location.href='collection.html'">
+        <img src="assets/Exquisite Designer Sarees for Wedding Party Wear.jpg" alt="Traditionals">
+        <div class="showcase-overlay">
+          <h3>Traditionals</h3>
+          <p>Rooted in heritage</p>
+        </div>
+      </div>
+      
+      <div class="showcase-card" onclick="location.href='collection.html'">
+        <img src="assets/Larobe8.jpg" alt="Party Wear">
+        <div class="showcase-overlay">
+          <h3>After Hours</h3>
+          <p>Nocturnal glamour</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY SECTION -->
+  <section class="philosophy">
+    <span class="section-tag" style="color: #444;">OUR PHILOSOPHY</span>
+    <h2>“True luxury is the quiet confidence of knowing you are impeccably designed.”</h2>
+    
+    <div class="cta-block" style="margin-top: 80px;">
+       <a href="lookbook.html" class="btn" style="background: white; color: black;">View Lookbook</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="logo" style="color: white; margin-bottom: 20px;">SAMAYRA</div>
+  <p>© 2026 Luxury Fashion House. All Rights Reserved.</p>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  window.onload = updateNavbar;
+</script>
+
+</body>
+</html>

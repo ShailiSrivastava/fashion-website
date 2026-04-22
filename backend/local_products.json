@@ -1,0 +1,107 @@
+[
+  {
+    "_id": "local_0",
+    "name": "Linen Luxe Blouse",
+    "category": "casual",
+    "price": 809,
+    "imagePath": "assets/products/casual_0_local.jpg"
+  },
+  {
+    "_id": "local_1",
+    "name": "Silk Shift Dress",
+    "category": "casual",
+    "price": 343,
+    "imagePath": "assets/products/casual_1_local.jpg"
+  },
+  {
+    "_id": "local_2",
+    "name": "Premium Knit Shell",
+    "category": "casual",
+    "price": 1094,
+    "imagePath": "assets/products/casual_2_local.jpg"
+  },
+  {
+    "_id": "local_3",
+    "name": "Cotton Everyday Tee",
+    "category": "casual",
+    "price": 174,
+    "imagePath": "assets/products/casual_3_local.jpg"
+  },
+  {
+    "_id": "local_4",
+    "name": "Cashmere Wrap",
+    "category": "casual",
+    "price": 926,
+    "imagePath": "assets/products/casual_4_local.jpg"
+  },
+  {
+    "_id": "local_5",
+    "name": "Heritage Gold Lehenga",
+    "category": "traditional",
+    "price": 715,
+    "imagePath": "assets/products/traditional_5_local.jpg"
+  },
+  {
+    "_id": "local_6",
+    "name": "Royal Banarasi Silk",
+    "category": "traditional",
+    "price": 662,
+    "imagePath": "assets/products/traditional_6_local.jpeg"
+  },
+  {
+    "_id": "local_7",
+    "name": "Midnight Embroidered Suit",
+    "category": "traditional",
+    "price": 487,
+    "imagePath": "assets/products/traditional_7_local.jpg"
+  },
+  {
+    "_id": "local_8",
+    "name": "Kanchipuram Heritage Saree",
+    "category": "traditional",
+    "price": 1074,
+    "imagePath": "assets/products/traditional_8_local.jpg"
+  },
+  {
+    "_id": "local_9",
+    "name": "Handloom Weave Saree",
+    "category": "traditional",
+    "price": 971,
+    "imagePath": "assets/products/traditional_9_local.jpg"
+  },
+  {
+    "_id": "local_10",
+    "name": "Midnight Velvet Noir",
+    "category": "party",
+    "price": 262,
+    "imagePath": "assets/products/party_10_local.jpg"
+  },
+  {
+    "_id": "local_11",
+    "name": "Crimson Satin Glow",
+    "category": "party",
+    "price": 484,
+    "imagePath": "assets/products/party_11_local.jpg"
+  },
+  {
+    "_id": "local_12",
+    "name": "Stellar Sequin Gown",
+    "category": "party",
+    "price": 292,
+    "imagePath": "assets/products/party_12_local.jpg"
+  },
+  {
+    "_id": "local_13",
+    "name": "Ethereal Lace Gown",
+    "category": "party",
+    "price": 566,
+    "imagePath": "assets/products/party_13_local.jpg"
+  },
+  {
+    "_id": "local_14",
+    "name": "Silver Moonlight Mini",
+    "category": "party",
+    "price": 248,
+    "imagePath": "assets/products/party_14_local.jpg"
+  }
+]

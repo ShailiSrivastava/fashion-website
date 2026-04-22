@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Collection</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">SAMAYRA</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+    <li><a href="fit.html">Fit Quiz</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<section class="collection-header">
+  <div class="header-inner">
+    <p class="subtitle">CURATED EDITION</p>
+    <h1>The Collection</h1>
+    <p class="description">An ensemble of heritage fibers and modern silhouettes. Designed for the discerning individual.</p>
+  </div>
+</section>
+
+<!-- PERSONALIZED MESSAGE -->
+<div id="fitMessageContainer">
+  <p id="fitMessage"></p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <section class="filters">
+    <button id="allBtn" class="filter-btn active" onclick="filterItems('all', this)">All curations</button>
+    <button id="casualBtn" class="filter-btn" onclick="filterItems('casual', this)">Casuals</button>
+    <button id="traditionalBtn" class="filter-btn" onclick="filterItems('traditional', this)">Traditionals</button>
+    <button id="partyBtn" class="filter-btn" onclick="filterItems('party', this)">Party Wear</button>
+  </section>
+</div>
+
+<!-- COLLECTION GRID -->
+<section class="collection-grid" id="collectionGrid">
+  <p style="grid-column: 1 / -1; text-align: center;">Loading curations...</p>
+</section>
+
+<footer>
+ SAMAYRA — Luxury Fashion House
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

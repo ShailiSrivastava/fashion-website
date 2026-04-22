@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">SAMAYRA</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+    <li><a href="fit.html">Fit Quiz</a></li>
+  </ul>
+</nav>
+
+<div class="auth-container">
+  <div class="auth-box">
+
+    <h2 id="title">Login</h2>
+
+    <input type="text" id="name" placeholder="Name" style="display:none;">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="submitForm()">Login</button>
+
+    <p class="toggle" onclick="toggleForm()">Don't have an account? Sign up</p>
+
+    <p id="errorMsg" class="error"></p>
+
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

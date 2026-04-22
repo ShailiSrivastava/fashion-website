@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Find Your Fit</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">SAMAYRA</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+    <li><a href="fit.html">Fit Quiz</a></li>
+  </ul>
+</nav>
+
+<section class="header">
+  <h1>Find Your Fit</h1>
+  <p>Answer a few questions to discover silhouettes that suit you best.</p>
+</section>
+
+<section class="fit-container">
+
+<div class="quiz" id="quizBox">
+
+<div id="stepTracker" style="margin-bottom: 20px; font-weight: 500; opacity: 0.6;">Step 1 of 5</div>
+
+<!-- Step 1 -->
+<div class="question step-div" id="step1">
+<h3>1. How would you describe your shoulder to hip ratio?</h3>
+<div class="quiz-options">
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(2), 300)">
+    <input type="radio" name="shape" value="pear">
+    <div class="option-content">
+      <h4>Narrow Shoulders, Wider Hips</h4>
+      <p>Your hips are significantly wider than your shoulders.</p>
+    </div>
+  </label>
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(2), 300)">
+    <input type="radio" name="shape" value="hourglass">
+    <div class="option-content">
+      <h4>Balanced</h4>
+      <p>Your shoulders and hips are roughly the same width.</p>
+    </div>
+  </label>
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(2), 300)">
+    <input type="radio" name="shape" value="inverted">
+    <div class="option-content">
+      <h4>Broad Shoulders, Narrow Hips</h4>
+      <p>Your shoulders are noticeably wider than your hips.</p>
+    </div>
+  </label>
+</div>
+</div>
+
+<!-- Step 2 -->
+<div class="question step-div" id="step2" style="display:none;">
+<h3>2. How defined is your waist?</h3>
+<div class="quiz-options">
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(3), 300)">
+    <input type="radio" name="waist" value="defined">
+    <div class="option-content">
+      <h4>Well Defined</h4>
+      <p>Your waist curves in distinctly.</p>
+    </div>
+  </label>
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(3), 300)">
+    <input type="radio" name="waist" value="straight">
+    <div class="option-content">
+      <h4>Straight / Slight</h4>
+      <p>Your waist is relatively aligned with your hips and shoulders.</p>
+    </div>
+  </label>
+</div>
+</div>
+
+<!-- Step 3 -->
+<div class="question step-div" id="step3" style="display:none;">
+<h3>3. What is your preferred style vibe?</h3>
+<div class="quiz-options">
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(4), 300)">
+    <input type="radio" name="vibe" value="minimalist">
+    <div class="option-content">
+      <h4>Minimalist & Sleek</h4>
+      <p>Clean lines, neutral colors, and subtle elegance.</p>
+    </div>
+  </label>
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(4), 300)">
+    <input type="radio" name="vibe" value="glamorous">
+    <div class="option-content">
+      <h4>Bold & Glamorous</h4>
+      <p>Statement pieces, intricate details, and high-impact luxury.</p>
+    </div>
+  </label>
+</div>
+</div>
+
+<!-- Step 4 -->
+<div class="question step-div" id="step4" style="display:none;">
+<h3>4. What is your height category?</h3>
+<div class="quiz-options">
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(5), 300)">
+    <input type="radio" name="height" value="petite">
+    <div class="option-content">
+      <h4>Petite (Under 5'4")</h4>
+    </div>
+  </label>
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(5), 300)">
+    <input type="radio" name="height" value="average">
+    <div class="option-content">
+      <h4>Average (5'4" to 5'7")</h4>
+    </div>
+  </label>
+  <label class="quiz-option" onclick="setTimeout(()=>nextStep(5), 300)">
+    <input type="radio" name="height" value="tall">
+    <div class="option-content">
+      <h4>Tall (Over 5'7")</h4>
+    </div>
+  </label>
+</div>
+</div>
+
+<!-- Step 5 -->
+<div class="question step-div" id="step5" style="display:none;">
+<h3>5. What is your underlying skin tone?</h3>
+<div class="quiz-options">
+  <label class="quiz-option">
+    <input type="radio" name="skinTone" value="warm">
+    <div class="option-content">
+      <h4>Warm / Golden</h4>
+      <p>Veins look greenish, gold jewelry flatters you most.</p>
+    </div>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="skinTone" value="cool">
+    <div class="option-content">
+      <h4>Cool / Rosy</h4>
+      <p>Veins look bluish/purple, silver jewelry flatters you most.</p>
+    </div>
+  </label>
+  <label class="quiz-option">
+    <input type="radio" name="skinTone" value="neutral">
+    <div class="option-content">
+      <h4>Neutral</h4>
+      <p>A mix of both, you look great in both gold and silver.</p>
+    </div>
+  </label>
+</div>
+<button onclick="calculateFit()" style="width: 100%; border-radius: 12px; margin-top: 25px;">ANALYZE MY PROFILE</button>
+</div>
+
+<!-- Final Result & Camera Validation -->
+<div class="result" id="result" style="display:none;">
+<h2 id="bodyType" style="font-family:'Playfair Display'; font-size: 28px;"></h2>
+<p id="advice" style="margin-top:10px; opacity:0.8; line-height: 1.6;"></p>
+</div>
+
+<div class="camera-beta" id="cameraSection" style="display:none; margin-top: 40px; padding-top: 30px; border-top: 1px solid #ddd;">
+<p id="cameraPrompt" style="margin-bottom: 20px; font-weight:500; font-size:16px;">Let SAMAYRA verify your presence and finalize recommendations based on your tone.</p>
+<video id="video" autoplay style="display:none; width:100%; max-width:320px; border-radius:16px; background:black; margin:0 auto 15px;"></video>
+<button id="camBtn" onclick="startCamera()" style="border-radius: 12px; width:100%;">Start Camera Analysis</button>
+
+<div id="confidenceBox" style="margin-top: 25px; padding: 20px; background: #fafafa; border: 1px solid #eee; border-radius: 12px; display:none; text-align:left;">
+  <h3 style="font-family:'Playfair Display',serif; margin-bottom: 10px; font-size:20px;">Verification Complete</h3>
+  <p id="confidenceText" style="opacity:0.8; font-size:15px; line-height: 1.5;"></p>
+</div>
+</div>
+
+</div>
+
+<div class="fit-visual">
+<img src="assets/download (1).jpg">
+</div>
+
+</section>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

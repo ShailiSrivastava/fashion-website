@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | The Editorial Issue</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* MAGAZINE OVERHAUL */
+  body { background: #fff; overflow-x: hidden; }
+  
+  .magazine-issue {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* FULL SPREAD COMPOSITION */
+  .spread {
+    min-height: 100vh;
+    padding: 120px 90px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #f8f8f8;
+    position: relative;
+  }
+
+  .spread:nth-child(even) { background: #fdfdfd; }
+
+  .spread-content {
+    display: flex;
+    width: 100%;
+    gap: 120px;
+    align-items: center;
+  }
+
+  .spread.reverse .spread-content {
+    flex-direction: row-reverse;
+  }
+
+  .image-column {
+    flex: 1.2;
+    position: relative;
+  }
+
+  .image-column img {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+    background: #fff;
+    padding: 10px;
+  }
+
+  .text-column {
+    flex: 0.8;
+  }
+
+  .edition-label {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .spread-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 82px;
+    line-height: 0.95;
+    margin-bottom: 40px;
+    letter-spacing: -2px;
+    color: #111;
+  }
+
+  .spread-title span {
+      display: block;
+      font-size: 24px;
+      letter-spacing: 2px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      color: #666;
+      margin-top: 15px;
+  }
+
+  .spread-copy {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    max-width: 400px;
+    font-style: italic;
+  }
+
+  /* NUMEROLOGY */
+  .spread-number {
+    position: absolute;
+    bottom: 90px;
+    right: 90px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: #f0f0f0;
+    font-style: italic;
+    z-index: -1;
+  }
+
+  /* SPECIAL HERO BG EXTENSION FOR THE FIRST PAGE */
+  .hero-spread {
+    background: #1a1a1b !important;
+    color: white;
+  }
+
+  .hero-spread .image-column img {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .hero-spread .spread-title { color: white; }
+  .hero-spread .spread-copy { color: #aaa; }
+  .hero-spread .spread-number { color: #222; }
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">SAMAYRA</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+    <li><a href="fit.html">Fit Quiz</a></li>
+  </ul>
+</nav>
+
+<div class="magazine-issue">
+
+  <!-- SPREAD 01: HERO NOIR -->
+  <section class="spread hero-spread">
+    <div class="spread-content">
+      <div class="image-column">
+        <img src="assets/hey2.....jpeg" alt="Crimson & Emerald">
+      </div>
+      <div class="text-column">
+        <span class="edition-label">Cover Story</span>
+        <h1 class="spread-title">Crimson <br>& Emerald <span>The Nocturnal Heritage</span></h1>
+        <p class="spread-copy">A cinematic exploration of traditional Indian threads under a velvet sky. Redefining the boundaries of elegance and ancestry.</p>
+      </div>
+    </div>
+    <div class="spread-number">01</div>
+  </section>
+
+  <!-- SPREAD 02: THE EVERYDAY MUSE -->
+  <section class="spread reverse">
+    <div class="spread-content">
+      <div class="image-column">
+        <img src="assets/WhatsApp Image 2026-02-01 at 22.06.53.jpeg" alt="Everyday Muse">
+      </div>
+      <div class="text-column">
+        <span class="edition-label">Urban Series</span>
+        <h1 class="spread-title">The Everyday <br>Muse <span>Quiet Sophistication</span></h1>
+        <p class="spread-copy">Street-level poise captured in the soft light of the morning. Proof that fashion is an 18-hour conversation.</p>
+      </div>
+    </div>
+    <div class="spread-number">02</div>
+  </section>
+
+  <!-- SPREAD 03: THE DETAIL WORK -->
+  <section class="spread">
+    <div class="spread-content">
+      <div class="image-column">
+        <img src="assets/hey3...jpeg" alt="Saree Details">
+      </div>
+      <div class="text-column">
+        <span class="edition-label">Macro Perspective</span>
+        <h1 class="spread-title">Woven <br>Intricacy <span>The Emerald Thread</span></h1>
+        <p class="spread-copy">A focus on the delicate craftsmanship that goes into every seam. Where the needle meets the soul of the fabric.</p>
+      </div>
+    </div>
+    <div class="spread-number">03</div>
+  </section>
+
+  <!-- SPREAD 04: RIVIERA DIARIES -->
+  <section class="spread reverse">
+    <div class="spread-content">
+      <div class="image-column">
+        <img src="assets/iiiiiii.jpeg" alt="Riviera Street">
+      </div>
+      <div class="text-column">
+        <span class="edition-label">Seasonal Escape</span>
+        <h1 class="spread-title">Riviera <br>Diaries <span>Monochromatic Chic</span></h1>
+        <p class="spread-copy">Structured silhouettes meet the carefree spirit of the coast. A minimalist take on timeless resort-wear.</p>
+      </div>
+    </div>
+    <div class="spread-number">04</div>
+  </section>
+
+  <!-- SPREAD 05: DESERT NOIR -->
+  <section class="spread">
+    <div class="spread-content">
+      <div class="image-column">
+        <img src="assets/hey4.jpeg" alt="Desert Poise">
+      </div>
+      <div class="text-column">
+        <span class="edition-label">Architectural Form</span>
+        <h1 class="spread-title">Desert <br>Poise <span>Dune & Shadow</span></h1>
+        <p class="spread-copy">Exploring the interplay between structured luxury and the organic, sweeping curves of the natural world.</p>
+      </div>
+    </div>
+    <div class="spread-number">05</div>
+  </section>
+
+  <!-- SPREAD 06: VELVET DUSK -->
+  <section class="spread reverse">
+    <div class="spread-content">
+      <div class="image-column">
+        <img src="assets/hey5.jpeg" alt="Velvet Dusk">
+      </div>
+      <div class="text-column">
+        <span class="edition-label">After Hours</span>
+        <h1 class="spread-title">Velvet <br>Dusk <span>The Final Act</span></h1>
+        <p class="spread-copy">Concluding the editorial with a study in deep textures and the mysterious allure of the evening.</p>
+      </div>
+    </div>
+    <div class="spread-number">06</div>
+  </section>
+
+</div>
+
+<section class="quote-section">
+  “Fashion is not about trends.  
+  It’s about identity, confidence, and presence.”
+</section>
+
+<footer>
+  © 2026 SAMAYRA — Luxury Fashion House
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  // Initial call to set active nav link
+  window.onload = updateNavbar;
+</script>
+
+</body>
+</html>

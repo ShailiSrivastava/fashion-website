@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMAYRA | Your Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* PREMIUM PROFILE STYLES */
+  body {
+    background: #fbfbf9;
+  }
+  .profile-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 70px;
+    padding: 80px 110px 120px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  /* LEFT SIDEBAR - USER CARD */
+  .user-card {
+    background: #111;
+    color: white;
+    padding: 60px 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 40px 60px rgba(0,0,0,0.25);
+    position: sticky;
+    top: 40px;
+    height: max-content;
+  }
+  .user-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #e5e5e5, #ffffff);
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #111;
+    font-family: 'Playfair Display', serif;
+  }
+  .user-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+  }
+  .user-card p {
+    opacity: 0.6;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  .fit-badge {
+    display: inline-block;
+    padding: 12px 25px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .logout-btn-premium {
+    width: 100%;
+    margin-top: 50px;
+    background: white;
+    color: #111;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .logout-btn-premium:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255,255,255,0.15);
+  }
+
+  /* RIGHT SIDE - CONTENT TABS */
+  .content-header {
+    margin-bottom: 60px;
+  }
+  .content-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    margin-bottom: 15px;
+    color: #111;
+    letter-spacing: -1px;
+  }
+  .content-header p {
+    font-size: 17px;
+    opacity: 0.6;
+    max-width: 600px;
+  }
+
+  .premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 50px 40px;
+  }
+
+  .premium-item {
+    background: transparent;
+    cursor: pointer;
+  }
+  .premium-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    transition: 0.5s;
+  }
+  .premium-item:hover img {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 50px rgba(0,0,0,0.12);
+  }
+  .premium-item-info {
+    padding: 24px 5px 0;
+  }
+  .premium-item-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #111;
+  }
+  .premium-item-info p {
+    font-size: 13px;
+    opacity: 0.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: #e5e5e5;
+    margin: 80px 0;
+  }
+  
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 35px;
+    border-left: 4px solid #111;
+    padding-left: 20px;
+    line-height: 1.1;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">SAMAYRA</a></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="lookbook.html">Lookbook</a></li>
+    <li><a href="fit.html">Fit Quiz</a></li>
+  </ul>
+</nav>
+
+<div class="profile-layout">
+  
+  <!-- LEFT: User Identity Card -->
+  <aside class="user-card">
+    <div class="user-avatar" id="userInitial">?</div>
+    <h1 id="userName">User</h1>
+    <p id="userEmail">user@example.com</p>
+    
+    <div id="fitBadgeContainer" style="display:none;">
+      <div class="fit-badge" id="fitType"></div>
+      <p id="fitAdvice" style="font-style: italic; line-height: 1.6; opacity: 0.7; margin-top: 15px; font-size: 13.5px;"></p>
+    </div>
+
+    <button class="logout-btn-premium" onclick="logout()">Sign Out</button>
+  </aside>
+
+  <!-- RIGHT: Content Streams -->
+  <main>
+    <div class="content-header">
+      <h2>Your Curated Universe</h2>
+      <p>Pieces selected specifically for your aesthetic, skin-tone, and profile metrics.</p>
+    </div>
+
+    <!-- Virtual Closet / Wishlist -->
+    <h3 class="section-title">The Wishlist</h3>
+    <div id="closetGrid" class="premium-grid">
+      <p style="opacity: 0.5; grid-column: 1 / -1; font-size: 16px;">Unlocking your closet records...</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Recommendations -->
+    <h3 class="section-title">Smart Recommendations</h3>
+    <div id="recommendationGrid" class="premium-grid">
+      <p style="opacity: 0.5; grid-column: 1 / -1; font-size: 16px;">Processing your fit logic...</p>
+    </div>
+  </main>
+
+</div>
+
+<footer>
+  SAMAYRA — Luxury Fashion House
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || (!user.token && !user.name)) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    // Set side panel data
+    let cleanName = user.name || "Guest";
+    document.getElementById("userName").innerText = cleanName;
+    document.getElementById("userEmail").innerText = user.email || "";
+    document.getElementById("userInitial").innerText = cleanName.charAt(0).toUpperCase();
+
+    // Fetch Virtual Closet
+    try {
+      const closetRes = await fetch(`${API_BASE}/users/closet`, {
+        headers: { "Authorization": `Bearer ${user.token}` }
+      });
+      const closetItems = await closetRes.json();
+      const closetGrid = document.getElementById("closetGrid");
+      
+      if (closetItems && closetItems.length > 0) {
+        closetGrid.innerHTML = "";
+        closetItems.forEach(item => {
+          closetGrid.innerHTML += `
+            <div class="premium-item" onclick="window.location.href='collection.html'">
+              <img src="${item.imagePath}">
+              <div class="premium-item-info">
+                <h3>${item.name}</h3>
+                <p>SAVED ITEM • $${item.price}</p>
+              </div>
+            </div>
+          `;
+        });
+      } else {
+        closetGrid.innerHTML = `<p style="opacity: 0.5; grid-column: 1 / -1;">Your wishlist is cold. <a href="collection.html" style="color:#111; font-weight:500;">Heat it up in the Collection.</a></p>`;
+      }
+    } catch (err) {
+      console.error(err);
+      document.getElementById("closetGrid").innerHTML = `<p style="opacity: 0.5; grid-column: 1 / -1; color: red;">Failed to load wishlist. Ensure backend is running.</p>`;
+    }
+
+    // Recommendation logic
+    const savedFit = JSON.parse(localStorage.getItem("samayraFit"));
+    const recGrid = document.getElementById("recommendationGrid");
+    
+    if (savedFit) {
+      document.getElementById("fitBadgeContainer").style.display = "block";
+      // Split to clean up the long string (e.g., "Hourglass Silhouette - Glamorous Edit")
+      let cleanType = savedFit.type;
+      if (cleanType.includes("-")) cleanType = cleanType.split('-')[0].trim();
+      document.getElementById("fitType").innerText = cleanType.toUpperCase();
+      document.getElementById("fitAdvice").innerText = savedFit.advice;
+
+      recGrid.innerHTML = ""; // Clear loader
+      
+      // Pull items from DB matching vibe
+      try {
+        const prodRes = await fetch(`${API_BASE}/products`);
+        const allProds = await prodRes.json();
+        
+        let matches = allProds;
+        if(savedFit.type.includes("Pear") || savedFit.type.includes("Hourglass")) {
+          matches = allProds.filter(p => ["traditional", "party"].includes(p.category));
+        } else {
+          matches = allProds.filter(p => ["casual"].includes(p.category));
+        }
+
+        const shuffle = (array) => array.sort(() => 0.5 - Math.random());
+        const best = shuffle(matches).slice(0, 3); // top 3 hits
+
+        if (best.length === 0) {
+           recGrid.innerHTML += `<p>No current stock matches your intense profile.</p>`;
+        }
+        
+        best.forEach(item => {
+          recGrid.innerHTML += `
+            <div class="premium-item" onclick="window.location.href='collection.html'">
+              <img src="${item.imagePath}">
+              <div class="premium-item-info">
+                <h3>${item.name}</h3>
+                <p>98% MATCH FOR YOUR PROFILE</p>
+              </div>
+            </div>
+          `;
+        });
+
+      } catch (err) {
+        recGrid.innerHTML = `<p>Failed to load AI recommendations.</p>`;
+      }
+    } else {
+      recGrid.innerHTML = `<p style="opacity: 0.5; grid-column: 1 / -1;">Complete the <a href="fit.html" style="color:#111; font-weight:500;">Fit Profile Quiz</a> to unlock AI recommendations.</p>`;
+    }
+  });
+
+</script>
+</body>
+</html>
